@@ -1,7 +1,7 @@
 utlite
 ======
 
-A lightweight assertion based unit test framework for C++
+A lightweight assertion based unit test framework for C++.
 
 This is a header only simple unit test framework that can be used with any C++ project. If a C project is using a C++
 compiler, then this framework can be easily incorporated inside it. It has the below features:
