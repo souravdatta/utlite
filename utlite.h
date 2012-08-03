@@ -168,3 +168,4 @@ protected:
 } // namespace utlite
 
 #endif
+// end of utlite.h
