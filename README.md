@@ -14,3 +14,4 @@ compiler, then this framework can be easily incorporated inside it. It has the b
 6. Published under LGPL.
 7. Future versions will support logging (um, not a feature though).
 
+For an example on how to use it, see testutlite.cc.
