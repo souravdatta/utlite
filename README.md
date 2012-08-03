@@ -12,5 +12,5 @@ compiler, then this framework can be easily incorporated inside it. It has the b
 4. Easy to implement and looks similar to CPPUNIT (but a lot simpler).
 5. Header-only, so linking/building nightmare.
 6. Published under LGPL.
-7. Future versions will support thread safety and logging (um, not a fature though).
+7. Future versions will support thread safety and logging (um, not a feature though).
 
