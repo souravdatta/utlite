@@ -28,7 +28,7 @@ struct UTException
 {
 	unsigned int utex_line;
 	std::string utex_what;
-    std::string utex_file;
+	std::string utex_file;
 };
 
 struct UTFailInfo
@@ -36,64 +36,64 @@ struct UTFailInfo
 	std::string utc_name;
 	unsigned int utc_line;
 	std::string utc_what;
-    std::string utc_file;
+	std::string utc_file;
 };
 
 class ResultStore
 {
 public:
-    static ResultStore *getInstance()
-    {
-        static ResultStore *lsinstance = new ResultStore();
-        return lsinstance;
-    }
-    
-    void putFail(const UTFailInfo& l_info)
-    {
-        fail_lst.push_back(l_info);
-    }
-    
-    void incPassCount()
-    {
-        this->pass_count++;
-    }
-    
-    void show_results() const
-    {
-        std::cout << std::endl << pass_count << " test case(s) passed." << std::endl;
-        if (fail_lst.size() > 0) {
-            for (std::list<UTFailInfo>::const_iterator lit = fail_lst.begin();
-                 lit != fail_lst.end();
-                 ++lit) {
-                 std::cout << "Failed: " << lit->utc_name
-                           << ", line: " << lit->utc_line
-                           << ", file: " << lit->utc_file
-                           << "\nexpr: " << lit->utc_what
-                           << std::endl;
-            }
-        }
-    }
-private:
-    ResultStore()
-    {
-    }
-    
-    ResultStore(const ResultStore&)
-    {
-    }
+	static ResultStore *getInstance()
+	{
+		static ResultStore *lsinstance = new ResultStore();
+		return lsinstance;
+	}
 
-    std::list<UTFailInfo> fail_lst;
-    unsigned int pass_count;
+	void putFail(const UTFailInfo& l_info)
+	{
+		fail_lst.push_back(l_info);
+	}
+
+	void incPassCount()
+	{
+		this->pass_count++;
+	}
+
+	void show_results() const
+	{
+		std::cout << std::endl << pass_count << " test case(s) passed." << std::endl;
+		if (fail_lst.size() > 0) {
+			for (std::list<UTFailInfo>::const_iterator lit = fail_lst.begin();
+				 lit != fail_lst.end();
+				 ++lit) {
+				 std::cout << "Failed: " << lit->utc_name
+						   << ", line: " << lit->utc_line
+						   << ", file: " << lit->utc_file
+						   << "\nexpr: " << lit->utc_what
+						   << std::endl;
+			}
+		}
+	}
+private:
+	ResultStore()
+	{
+	}
+
+	ResultStore(const ResultStore&)
+	{
+	}
+
+	std::list<UTFailInfo> fail_lst;
+	unsigned int pass_count;
 };
 
 #define UT_ASSERT(COND) \
-    if (!(COND)) { \
-        utlite::UTException lexp; \
-        lexp.utex_line = __LINE__; \
-        lexp.utex_what = #COND; \
-        lexp.utex_file = __FILE__; \
-        throw lexp; \
-    }
+	if (!(COND)) { \
+		utlite::UTException lexp; \
+		lexp.utex_line = __LINE__; \
+		lexp.utex_what = #COND; \
+		lexp.utex_file = __FILE__; \
+		throw lexp; \
+	}
 
 template <class Suite>
 class UTCase
@@ -142,28 +142,28 @@ public:
 		suite.push_back(lcase);
 	}
 
-    virtual void run()
-    {
+	virtual void run()
+	{
 		addSuite();
-        typename std::list< UTCase<ChildSuite> >::iterator lit;
-        for (lit = suite.begin(); lit != suite.end(); ++lit) {
-            lit->do_test();
-        }
-        ResultStore::getInstance()->show_results();
-    }
+		typename std::list< UTCase<ChildSuite> >::iterator lit;
+		for (lit = suite.begin(); lit != suite.end(); ++lit) {
+			lit->do_test();
+		}
+		ResultStore::getInstance()->show_results();
+	}
 protected:
 	std::list< UTCase<ChildSuite> > suite;
 };
 
 #define SUITE_BEGIN \
-    virtual void addSuite() \
-    { 
+	virtual void addSuite() \
+	{ 
 
 #define SUITE_END \
-    }
+	}
 
 #define UT(NAME, CLASS) \
-    do {addTest(#CLASS "::" #NAME, &CLASS::NAME, this);} while(0)
+	do {addTest(#CLASS "::" #NAME, &CLASS::NAME, this);} while(0)
 
 } // namespace utlite
 
