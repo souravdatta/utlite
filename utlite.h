@@ -65,11 +65,11 @@ public:
 			for (std::list<UTFailInfo>::const_iterator lit = fail_lst.begin();
 				 lit != fail_lst.end();
 				 ++lit) {
-				 std::cout << "Failed: " << lit->utc_name
-						   << ", line: " << lit->utc_line
-						   << ", file: " << lit->utc_file
-						   << "\nexpr: " << lit->utc_what
-						   << std::endl;
+				 std::cout	<< "Failed: " << lit->utc_name
+							<< ", line: " << lit->utc_line
+							<< ", file: " << lit->utc_file
+							<< "\nexpr: " << lit->utc_what
+							<< std::endl;
 			}
 		}
 	}
@@ -114,7 +114,7 @@ public:
 			linfo.utc_name = this->utc_name;
 			linfo.utc_line = lexp.utex_line;
 			linfo.utc_what = lexp.utex_what;
-            linfo.utc_file = lexp.utex_file;
+			linfo.utc_file = lexp.utex_file;
 			ResultStore::getInstance()->putFail(linfo);
 			std::cout << "F";
 			return;
