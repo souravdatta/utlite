@@ -73,7 +73,7 @@ public:
             }
         }
     }
-    private:
+private:
     ResultStore() : pass_count(0)
     {
     }
